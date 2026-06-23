@@ -1,0 +1,26 @@
+[
+  {
+    "id": "dw_val_01",
+    "task_type": "model_architecture",
+    "instruction": "为一个 ResNet 瓶颈残差块（Bottleneck Residual Block）生成 Draw.io 架构图。自下而上展示：Input、1x1 Conv（降维）、BN、ReLU、3x3 Conv、BN、ReLU、1x1 Conv（升维）、BN，与输入相加的残差连接（必须用虚线箭头 dashed=1 表示 skip connection），最后 ReLU 输出。",
+    "requirements": {
+      "min_nodes": 10,
+      "min_edges": 9,
+      "required_labels": ["Input", "1x1 Conv", "3x3 Conv", "BN", "ReLU"],
+      "needs_dashed_edge": true,
+      "orientation_hint": "bottom_up"
+    }
+  },
+  {
+    "id": "dw_val_02",
+    "task_type": "flowchart",
+    "instruction": "生成一个用户登录认证流程图（Draw.io）。流程：用户提交账号密码 → 校验输入格式（菱形）→ 格式错误返回提示并结束（虚线返回）；格式正确则查询数据库 → 账号是否存在（菱形）→ 不存在返回失败；存在则校验密码是否正确（菱形）→ 错误返回失败；正确则签发 Token → 返回登录成功 → 结束。",
+    "requirements": {
+      "min_nodes": 10,
+      "min_edges": 10,
+      "required_labels": ["账号密码", "格式", "数据库", "密码", "Token", "成功", "失败"],
+      "needs_dashed_edge": true,
+      "orientation_hint": "top_down"
+    }
+  }
+]

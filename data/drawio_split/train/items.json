@@ -1,0 +1,72 @@
+[
+  {
+    "id": "dw_train_01",
+    "task_type": "model_architecture",
+    "instruction": "为一个完整的 Transformer 编码器层（Encoder Layer）生成 Draw.io 架构图。自下而上展示：Input Embedding、Positional Encoding、Multi-Head Attention、Add & Norm（注意力后）、Feed Forward、Add & Norm（FFN后）、输出。必须用虚线箭头 (dashed=1) 画出两处残差连接（skip connection），并标注 '× N' 表示堆叠。",
+    "requirements": {
+      "min_nodes": 9,
+      "min_edges": 8,
+      "required_labels": ["Embedding", "Positional", "Multi-Head Attention", "Add & Norm", "Feed Forward", "× N"],
+      "needs_dashed_edge": true,
+      "orientation_hint": "bottom_up"
+    }
+  },
+  {
+    "id": "dw_train_02",
+    "task_type": "flowchart",
+    "instruction": "生成一个模型训练流程图（Draw.io）。流程：加载数据 → 前向传播 → 计算损失 → 反向传播 → 更新参数 → 判断是否收敛（菱形判断节点）；未收敛回到前向传播（用虚线回环箭头），收敛则保存模型并结束。",
+    "requirements": {
+      "min_nodes": 9,
+      "min_edges": 9,
+      "required_labels": ["加载数据", "前向传播", "计算损失", "反向传播", "更新参数", "收敛", "保存模型"],
+      "needs_dashed_edge": true,
+      "orientation_hint": "top_down"
+    }
+  },
+  {
+    "id": "dw_train_03",
+    "task_type": "model_architecture",
+    "instruction": "为一个 CNN 图像分类网络生成 Draw.io 架构图，自左向右展示：Input Image、Conv1、Pool1、Conv2、Pool2、Conv3、Flatten、Fully Connected、Dropout、Softmax 输出。相邻层用箭头连接，并标注每层输出的特征图维度。",
+    "requirements": {
+      "min_nodes": 10,
+      "min_edges": 9,
+      "required_labels": ["Input", "Conv1", "Pool1", "Conv2", "Pool2", "Conv3", "Flatten", "Dropout", "Softmax"],
+      "orientation_hint": "left_right"
+    }
+  },
+  {
+    "id": "dw_train_04",
+    "task_type": "concept_diagram",
+    "instruction": "绘制 Multi-Head Attention 示意图（Draw.io）。需展示 Query、Key、Value 三路输入，Linear 投影、Scaled Dot-Product Attention（含 MatMul、Scale、Softmax、MatMul）、Concat、最终 Linear 输出，并用箭头表达完整数据流。",
+    "requirements": {
+      "min_nodes": 10,
+      "min_edges": 10,
+      "required_labels": ["Query", "Key", "Value", "Linear", "Scale", "Softmax", "Concat", "MatMul"],
+      "orientation_hint": "bottom_up"
+    }
+  },
+  {
+    "id": "dw_train_05",
+    "task_type": "system_architecture",
+    "instruction": "为一个 RAG（检索增强生成）系统生成 Draw.io 系统架构图。模块：User Query、Embedding Model、Vector Database、Retriever、Top-K Documents、Prompt Builder、LLM、Response、以及离线的 Document Ingestion → Chunking → Embedding → 写入 Vector Database 的索引流水线（索引流水线用虚线箭头表示离线流程）。",
+    "requirements": {
+      "min_nodes": 10,
+      "min_edges": 9,
+      "required_labels": ["User Query", "Embedding", "Vector Database", "Retriever", "Top-K", "Prompt", "LLM", "Response", "Chunking"],
+      "needs_dashed_edge": true,
+      "orientation_hint": "left_right"
+    }
+  },
+  {
+    "id": "dw_train_06",
+    "task_type": "flowchart",
+    "instruction": "生成一个二分查找算法的流程图（Draw.io）。包含：开始、初始化 low/high、循环条件 low<=high（菱形）、计算 mid、比较 target 与 arr[mid]（菱形判断）、相等返回 mid、target<arr[mid] 则 high=mid-1、target>arr[mid] 则 low=mid+1、回到循环条件（虚线回环）、循环结束未找到返回 -1、结束。",
+    "requirements": {
+      "min_nodes": 10,
+      "min_edges": 10,
+      "required_labels": ["开始", "low", "high", "mid", "target", "返回", "结束"],
+      "needs_dashed_edge": true,
+      "orientation_hint": "top_down"
+    }
+  }
+]

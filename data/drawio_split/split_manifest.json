@@ -1,0 +1,28 @@
+{
+  "benchmark": "DrawioDiagram",
+  "manifest_type": "self_generated",
+  "description": "Self-generated Draw.io diagram generation tasks for evolving the drawio-diagram skill with SkillOpt.",
+  "generated_by": "Claude Code (SkillOpt drawio env bootstrap)",
+  "counts": {
+    "train": 6,
+    "val": 2,
+    "test": 2
+  },
+  "item_fields": [
+    "id",
+    "task_type",
+    "instruction",
+    "requirements"
+  ],
+  "task_types": [
+    "model_architecture",
+    "flowchart",
+    "concept_diagram",
+    "system_architecture"
+  ],
+  "scoring": "Deterministic XML validation: well-formedness + mxfile/mxGraphModel/root structure + vertex/edge counts + required labels + (optional) dashed residual edge. hard = all checks pass; soft = fraction of checks passed.",
+  "notes": [
+    "These tasks are intentionally small (10 items total) — SkillOpt needs only a handful of scored rollouts per minibatch to drive skill edits.",
+    "The seed skill is the existing skills/drawio-diagram/SKILL.md document."
+  ]
+}

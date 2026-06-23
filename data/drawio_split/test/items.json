@@ -1,0 +1,26 @@
+[
+  {
+    "id": "dw_test_01",
+    "task_type": "model_architecture",
+    "instruction": "为一个标准 LSTM 单元生成 Draw.io 架构图。需展示遗忘门 Forget Gate（含 Sigmoid）、输入门 Input Gate（含 Sigmoid 与 tanh）、输出门 Output Gate（含 Sigmoid）、Cell State 更新（含逐元素乘法与加法）、Hidden State 输出，以及它们之间完整的数据流箭头。门控对 Cell State 的调制用虚线箭头表示。",
+    "requirements": {
+      "min_nodes": 10,
+      "min_edges": 9,
+      "required_labels": ["Forget Gate", "Input Gate", "Output Gate", "Cell State", "Hidden State", "Sigmoid", "tanh"],
+      "needs_dashed_edge": true,
+      "orientation_hint": "left_right"
+    }
+  },
+  {
+    "id": "dw_test_02",
+    "task_type": "system_architecture",
+    "instruction": "为一个典型微服务电商系统生成 Draw.io 架构图。模块：Client、API Gateway、Auth Service、Order Service、Payment Service、Inventory Service、Database、Message Queue、Cache。用箭头表达同步调用关系，异步消息（经 Message Queue）用虚线箭头表示。",
+    "requirements": {
+      "min_nodes": 9,
+      "min_edges": 9,
+      "required_labels": ["Client", "API Gateway", "Auth Service", "Order Service", "Payment", "Inventory", "Database", "Message Queue", "Cache"],
+      "needs_dashed_edge": true,
+      "orientation_hint": "top_down"
+    }
+  }
+]
