@@ -1,0 +1,67 @@
+# =====================================================
+# SkillOpt config -- drawio (Draw.io diagram generation)
+# =====================================================
+# Evolves skills/drawio-diagram/SKILL.md against a small self-generated
+# task set, scored by a deterministic .drawio structural validator.
+#
+# Backend: custom_chat (OpenAI-compatible, e.g. DashScope Qwen).
+# Provide the API key via env before running, e.g.:
+#   export CUSTOM_CHAT_API_KEY=sk-...      (or DASHSCOPE key)
+# base_url / model below match the prior runs in this repo.
+
+_base_: ../_base_/default.yaml
+
+# ---- Model ----
+model:
+  optimizer_backend: custom_chat
+  target_backend: custom_chat
+  reasoning_effort: medium
+  custom_chat_base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  custom_chat_model: "qwen3.6-flash-2026-04-16"
+  custom_chat_temperature: "0.7"
+  custom_chat_max_tokens: "8000"
+  custom_chat_timeout_seconds: "300"
+
+# ---- Training ----
+# Tiny dataset (6 train items) -> small batches, a few epochs.
+train:
+  num_epochs: 3
+  batch_size: 6
+  accumulation: 1
+  seed: 42
+
+# ---- Gradient (Reflection) ----
+gradient:
+  analyst_workers: 4
+  minibatch_size: 3
+  merge_batch_size: 3
+  failure_only: false
+
+# ---- Optimizer ----
+optimizer:
+  learning_rate: 4
+  min_learning_rate: 2
+  lr_scheduler: cosine
+  skill_update_mode: patch
+  use_slow_update: true
+  use_meta_skill: true
+
+# ---- Evaluation ----
+evaluation:
+  use_gate: true
+  sel_env_num: 0      # 0 = use full val split (2 items)
+  test_env_num: 0     # 0 = use full test split (2 items)
+  eval_test: true
+
+# ---- Environment ----
+env:
+  name: drawio
+  skill_init: skillopt/envs/drawio/skills/initial.md
+  split_mode: split_dir
+  split_dir: data/drawio_split
+  data_path: ""
+  split_output_dir: ""
+  exec_timeout: 180
+  max_completion_tokens: 8192
+  workers: 6
+  limit: 0

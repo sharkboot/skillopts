@@ -93,6 +93,11 @@ def _register_builtins() -> None:
         _ENV_REGISTRY["swebench"] = SWEBenchAdapter
     except ImportError:
         pass
+    try:
+        from skillopt.envs.drawio.adapter import DrawioAdapter
+        _ENV_REGISTRY["drawio"] = DrawioAdapter
+    except ImportError:
+        pass
 
 
 def get_adapter(cfg: dict):
